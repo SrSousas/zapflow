@@ -509,6 +509,12 @@ h3 {
   font-size: 0.9rem;
 }
 
+.cash-price {
+  margin: 0.15rem 0 0.1rem;
+  font-size: 0.82rem;
+  color: #90a4bb;
+}
+
 .price-fade {
   animation: priceFade 260ms ease;
 }
