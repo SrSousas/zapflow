@@ -266,9 +266,12 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 0.76rem;
-  min-height: 255px;
-  max-height: 255px;
-  overflow: hidden;
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(158, 178, 200, 0.25) transparent;
 }
 
 .msg {
@@ -281,6 +284,10 @@ h3 {
   opacity: 0;
   transform: translateY(10px);
   animation: chatIn 0.35s ease forwards;
+}
+
+.msg-out {
+  animation: chatMessageOut 0.3s ease forwards;
 }
 
 .msg-client {
@@ -299,10 +306,6 @@ h3 {
 .msg ul {
   margin: 0.55rem 0 0;
   padding-left: 1rem;
-}
-
-.chat-flow-reset {
-  animation: chatOut 0.36s ease forwards;
 }
 
 .typing-indicator {
@@ -347,17 +350,6 @@ h3 {
   }
 }
 
-@keyframes chatOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-}
-
 @keyframes dotPulse {
   0%,
   80%,
@@ -368,6 +360,17 @@ h3 {
   40% {
     transform: translateY(-2px);
     opacity: 1;
+  }
+}
+
+@keyframes chatMessageOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
   }
 }
 
@@ -789,6 +792,11 @@ h3 {
 
   .btn-sm {
     display: none;
+  }
+
+  .chat-body {
+    min-height: 275px;
+    max-height: 275px;
   }
 }
 

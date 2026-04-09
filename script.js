@@ -137,24 +137,51 @@ const typingIndicator = document.getElementById('typing-indicator');
 const chatTimeElement = document.getElementById('chat-time');
 
 const conversationSteps = [
-  { type: 'client', text: 'Oi, queria saber mais', waitAfter: 1000 },
+  { type: 'client', text: 'Oi, queria saber mais', waitAfter: 1300 },
   {
     type: 'system',
-    text: `Olá, seja bem-vindo. Como posso te ajudar hoje?
-      <ul>
-        <li>1. Ver preços</li>
-        <li>2. Agendar atendimento</li>
-        <li>3. Falar com especialista</li>
-      </ul>`,
-    waitAfter: 1500,
-    typingBefore: 900
+    text: 'Olá, seja bem-vindo. Como posso te ajudar hoje?',
+    waitAfter: 1200,
+    typingBefore: 1200
   },
-  { type: 'client', text: '3', waitAfter: 1000 },
   {
     type: 'system',
-    text: 'Perfeito. Vou te conectar com um especialista agora 👋',
-    waitAfter: 1400,
-    typingBefore: 900
+    text: `1. Ver preços<br />2. Agendar atendimento<br />3. Falar com especialista`,
+    waitAfter: 1500,
+    typingBefore: 1200
+  },
+  { type: 'client', text: '1', waitAfter: 1300 },
+  {
+    type: 'system',
+    text: 'Perfeito. Temos planos pensados para diferentes tipos de negócio.',
+    waitAfter: 1300,
+    typingBefore: 1200
+  },
+  {
+    type: 'system',
+    text: 'Você quer algo mais simples para organizar seu atendimento ou algo mais completo para vender mais?',
+    waitAfter: 1600,
+    typingBefore: 1200
+  },
+  { type: 'client', text: 'Mais completo', waitAfter: 1300 },
+  {
+    type: 'system',
+    text: 'Nesse caso, o ideal pode ser o plano Profissional ou Premium.',
+    waitAfter: 1300,
+    typingBefore: 1200
+  },
+  {
+    type: 'system',
+    text: 'Se quiser, posso te conectar com um especialista agora.',
+    waitAfter: 1500,
+    typingBefore: 1200
+  },
+  { type: 'client', text: 'Quero sim', waitAfter: 1300 },
+  {
+    type: 'system',
+    text: 'Perfeito. Vou te encaminhar agora 👋',
+    waitAfter: 3400,
+    typingBefore: 1200
   }
 ];
 
@@ -185,6 +212,20 @@ function setTyping(visible) {
   }
 }
 
+async function smoothResetConversation() {
+  if (!chatFlowContainer) return;
+  const messages = Array.from(chatFlowContainer.querySelectorAll('.msg'));
+
+  for (const message of messages) {
+    message.classList.add('msg-out');
+    await wait(85);
+  }
+
+  await wait(240);
+  messages.forEach((message) => message.remove());
+  chatFlowContainer.scrollTop = 0;
+}
+
 async function runConversationLoop() {
   if (!chatFlowContainer) return;
 
@@ -204,15 +245,9 @@ async function runConversationLoop() {
       await wait(step.waitAfter);
     }
 
-    await wait(700);
-    chatFlowContainer.classList.add('chat-flow-reset');
-    await wait(360);
-    chatFlowContainer.classList.remove('chat-flow-reset');
-
-    Array.from(chatFlowContainer.querySelectorAll('.msg')).forEach((message) => {
-      message.remove();
-    });
     setTyping(false);
+    await smoothResetConversation();
+    await wait(420);
   }
 }
 
