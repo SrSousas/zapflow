@@ -131,3 +131,94 @@ billingButtons.forEach((button) => {
     updatePlanPricing(period);
   });
 });
+
+const chatFlowContainer = document.getElementById('chat-flow');
+const typingIndicator = document.getElementById('typing-indicator');
+const chatTimeElement = document.getElementById('chat-time');
+
+const conversationSteps = [
+  { type: 'client', text: 'Oi, queria saber mais', waitAfter: 1000 },
+  {
+    type: 'system',
+    text: `Olá, seja bem-vindo. Como posso te ajudar hoje?
+      <ul>
+        <li>1. Ver preços</li>
+        <li>2. Agendar atendimento</li>
+        <li>3. Falar com especialista</li>
+      </ul>`,
+    waitAfter: 1500,
+    typingBefore: 900
+  },
+  { type: 'client', text: '3', waitAfter: 1000 },
+  {
+    type: 'system',
+    text: 'Perfeito. Vou te conectar com um especialista agora 👋',
+    waitAfter: 1400,
+    typingBefore: 900
+  }
+];
+
+const wait = (time) => new Promise((resolve) => setTimeout(resolve, time));
+
+function updateChatTime() {
+  if (!chatTimeElement) return;
+  const now = new Date();
+  chatTimeElement.textContent = now.toLocaleTimeString('pt-BR', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
+
+function createMessage(type, content) {
+  const message = document.createElement('div');
+  message.className = `msg ${type === 'client' ? 'msg-client' : 'msg-system'}`;
+  message.innerHTML = content;
+  return message;
+}
+
+function setTyping(visible) {
+  if (!typingIndicator || !chatFlowContainer) return;
+  typingIndicator.hidden = !visible;
+  if (visible) {
+    chatFlowContainer.appendChild(typingIndicator);
+    chatFlowContainer.scrollTop = chatFlowContainer.scrollHeight;
+  }
+}
+
+async function runConversationLoop() {
+  if (!chatFlowContainer) return;
+
+  while (true) {
+    updateChatTime();
+
+    for (const step of conversationSteps) {
+      if (step.typingBefore && step.type === 'system') {
+        setTyping(true);
+        await wait(step.typingBefore);
+        setTyping(false);
+      }
+
+      const message = createMessage(step.type, step.text);
+      chatFlowContainer.appendChild(message);
+      chatFlowContainer.scrollTop = chatFlowContainer.scrollHeight;
+      await wait(step.waitAfter);
+    }
+
+    await wait(700);
+    chatFlowContainer.classList.add('chat-flow-reset');
+    await wait(360);
+    chatFlowContainer.classList.remove('chat-flow-reset');
+
+    Array.from(chatFlowContainer.querySelectorAll('.msg')).forEach((message) => {
+      message.remove();
+    });
+    setTyping(false);
+  }
+}
+
+if (chatFlowContainer && typingIndicator) {
+  setTyping(false);
+  runConversationLoop();
+  updateChatTime();
+  setInterval(updateChatTime, 60 * 1000);
+}
