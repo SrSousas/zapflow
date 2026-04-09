@@ -382,22 +382,6 @@ h3 {
   margin-right: 0.6rem;
 }
 
-.setup-card {
-  margin-bottom: 2.2rem;
-  border-color: #2f4f74;
-}
-
-.price {
-  margin: 0.5rem 0 0.2rem;
-  font-size: 1.6rem;
-  font-weight: 800;
-  line-height: 1.15;
-}
-
-.plans-title {
-  margin-bottom: 1rem;
-}
-
 .plan {
   position: relative;
   display: flex;
@@ -405,10 +389,72 @@ h3 {
   gap: 0.75rem;
 }
 
+.plan-grid {
+  margin-top: 1.2rem;
+}
+
+.plans-kicker {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  color: #c5fbd8;
+  max-width: 50ch;
+}
+
+.plan-name {
+  font-size: 1.24rem;
+  margin-bottom: 0.15rem;
+}
+
+.plan-prices {
+  list-style: none;
+  padding: 0.75rem;
+  margin: 0;
+  border-radius: 12px;
+  background: rgba(3, 11, 18, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  gap: 0.45rem;
+}
+
+.plan-prices li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+
+.plan-prices strong {
+  color: var(--text);
+  font-size: 0.96rem;
+}
+
+.plan-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.plan-features li {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.plan-features li::before {
+  content: "✓";
+  color: var(--primary);
+  margin-right: 0.5rem;
+  font-weight: 800;
+}
+
 .featured {
   border: 1px solid rgba(37, 211, 102, 0.7);
-  box-shadow: 0 20px 38px rgba(37, 211, 102, 0.16);
-  transform: translateY(-3px);
+  box-shadow: 0 22px 40px rgba(37, 211, 102, 0.18);
+  transform: translateY(-6px);
+  background: linear-gradient(180deg, #122338 0%, #0e1a2b 100%);
 }
 
 .badge {
@@ -423,15 +469,13 @@ h3 {
   padding: 0.28rem 0.58rem;
 }
 
-.plan-emphasis {
-  font-size: 0.88rem;
-  color: #d5ffe4;
-  margin-top: -0.2rem;
+.badge-dark {
+  background: linear-gradient(135deg, #d8e6f5, #9bb0c9);
+  color: #0a1420;
 }
 
-.plans-note {
-  margin-top: 1rem;
-  font-size: 0.92rem;
+.plan-professional .btn {
+  box-shadow: 0 16px 34px rgba(37, 211, 102, 0.36);
 }
 
 .faq-list {
@@ -566,8 +610,12 @@ h3 {
     padding-top: 4.7rem;
   }
 
-  .price {
-    font-size: 1.45rem;
+  .plan-prices li {
+    font-size: 0.9rem;
+  }
+
+  .plan-prices strong {
+    font-size: 0.92rem;
   }
 
   .btn-sm {
