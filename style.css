@@ -440,7 +440,7 @@ h3 {
 
 .plan-name {
   font-size: 1.24rem;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.35rem;
 }
 
 .plan-prices {
@@ -489,7 +489,7 @@ h3 {
 }
 
 .recurring-label {
-  margin: 0.2rem 0 0;
+  margin: 0.35rem 0 0;
   font-size: 0.78rem;
   color: #8ea4bb;
   text-transform: uppercase;
