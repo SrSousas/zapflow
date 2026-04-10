@@ -32,9 +32,9 @@
         <div class="container hero-grid">
           <div class="hero-copy reveal">
             <p class="eyebrow">Automação de atendimento no WhatsApp</p>
-            <h1 id="hero-title">Cada minuto sem resposta é cliente perdido.</h1>
+            <h1 id="hero-title">Se você demora pra responder, seu cliente já está fechando com outro.</h1>
             <p class="lead">
-              A Zaplify transforma seu WhatsApp em um atendimento rápido, organizado e profissional — para você parar de apagar incêndio, recuperar oportunidades e ganhar tempo para vender.
+              Automatize seu atendimento, responda mais rápido e organize seu WhatsApp sem esforço.
             </p>
 
             <ul class="hero-highlights" aria-label="Principais resultados com Zaplify">
@@ -62,20 +62,12 @@
                 <strong>Atendimento Zaplify</strong>
                 <p>responde em instantes</p>
               </div>
-              <span class="chat-time" aria-label="Horário">09:41</span>
+              <span class="chat-time" id="chat-time" aria-label="Horário">09:41</span>
             </div>
-            <div class="chat-body">
-              <div class="msg msg-client">Oi, queria saber mais</div>
-              <div class="msg msg-system">
-                Olá, seja bem-vindo. Como posso te ajudar hoje?
-                <ul>
-                  <li>1. Ver preços</li>
-                  <li>2. Agendar atendimento</li>
-                  <li>3. Falar com especialista</li>
-                </ul>
+            <div class="chat-body" id="chat-flow" aria-live="polite" aria-atomic="false">
+              <div class="typing-indicator" id="typing-indicator" aria-label="Atendente digitando" hidden>
+                <span></span><span></span><span></span>
               </div>
-              <div class="msg msg-client">3</div>
-              <div class="msg msg-system">Perfeito. Vou te conectar com um especialista agora 👋</div>
             </div>
             <div class="chat-foot">Atendimento organizado sem perder o tom humano.</div>
           </aside>
@@ -321,9 +313,7 @@
       <section class="section final-cta" aria-labelledby="cta-final-title">
         <div class="container reveal narrow">
           <h2 id="cta-final-title">Sua demora no WhatsApp já está custando vendas hoje.</h2>
-          <p>
-            Com a Zaplify, você organiza o atendimento, responde mais rápido e volta a ter tempo para cuidar do crescimento do seu negócio.
-          </p>
+          <p>Organize seu atendimento, responda mais rápido e pare de perder oportunidades todos os dias.</p>
           <a
             class="btn btn-lg"
             href="https://wa.me/556892327719?text=Ol%C3%A1%2C%20quero%20entender%20como%20funcionaria%20a%20automa%C3%A7%C3%A3o%20de%20atendimento%20para%20o%20meu%20neg%C3%B3cio."
@@ -331,7 +321,19 @@
             rel="noopener noreferrer"
             >Falar com especialista</a
           >
-          <p class="cta-note">Quanto antes automatizar, menos oportunidades você perde.</p>
+          <p class="cta-note">Quanto antes você resolver isso, menos clientes você perde.</p>
+
+          <div class="trust-row" aria-label="Selos de confiança">
+            <span class="trust-pill">100% seguro</span>
+            <span class="trust-pill">Atendimento confiável</span>
+            <span class="trust-pill">Pagamento facilitado</span>
+          </div>
+
+          <div class="payment-row" aria-label="Formas de pagamento">
+            <span class="pay-badge pay-pix" aria-label="Pix">Pix</span>
+            <span class="pay-badge" aria-label="Visa">VISA</span>
+            <span class="pay-badge" aria-label="Mastercard">Mastercard</span>
+          </div>
         </div>
       </section>
     </main>
