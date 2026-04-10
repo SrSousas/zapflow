@@ -597,16 +597,36 @@ h3 {
   line-height: 1.1;
 }
 
+.recurring-price-pro {
+  font-size: clamp(1.5rem, 4vw, 1.95rem);
+  letter-spacing: 0.01em;
+}
+
 .recurring-meta {
   margin: 0;
   color: #c9d5e3;
   font-size: 0.9rem;
 }
 
+.old-price {
+  margin: 0;
+  color: #8ca1b7;
+  font-size: 0.86rem;
+  text-decoration: line-through;
+  text-decoration-thickness: 1.4px;
+  text-decoration-color: rgba(217, 98, 98, 0.85);
+}
+
 .cash-price {
   margin: 0.15rem 0 0.1rem;
   font-size: 0.82rem;
   color: #90a4bb;
+}
+
+.promo-note {
+  margin: 0.1rem 0 0.25rem;
+  font-size: 0.75rem;
+  color: #92a5ba;
 }
 
 .price-fade {
