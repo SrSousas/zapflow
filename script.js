@@ -48,7 +48,7 @@ const activeLabel = document.getElementById('billing-active-label');
 
 const planPricing = {
   mensal: {
-    basic: { price: 'R$ 49,90', meta: '/mês', cash: 'ou R$ 49,90 à vista' },
+    basic: { price: 'R$ 78,90', meta: '/mês', cash: 'ou R$ 78,90 à vista' },
     pro: { price: 'R$ 79,90', meta: '/mês', cash: 'ou R$ 79,90 à vista' },
     premium: { price: 'R$ 119,90', meta: '/mês', cash: 'ou R$ 119,90 à vista' },
     label: 'Mensal'
