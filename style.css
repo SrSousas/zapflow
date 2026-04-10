@@ -266,30 +266,112 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 0.76rem;
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(158, 178, 200, 0.25) transparent;
 }
 
 .msg {
   max-width: 90%;
   padding: 0.72rem 0.78rem;
-  border-radius: 14px;
+  border-radius: 14px 14px 14px 4px;
   font-size: 0.92rem;
+  line-height: 1.45;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: chatIn 0.35s ease forwards;
+}
+
+.msg-out {
+  animation: chatMessageOut 0.3s ease forwards;
 }
 
 .msg-client {
   align-self: flex-end;
-  background: rgba(37, 211, 102, 0.2);
-  border: 1px solid rgba(37, 211, 102, 0.4);
+  border-radius: 14px 14px 4px 14px;
+  background: linear-gradient(140deg, rgba(37, 211, 102, 0.3), rgba(37, 211, 102, 0.16));
+  border: 1px solid rgba(37, 211, 102, 0.5);
 }
 
 .msg-system {
   align-self: flex-start;
-  background: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07));
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .msg ul {
   margin: 0.55rem 0 0;
   padding-left: 1rem;
+}
+
+.typing-indicator {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.33rem;
+  padding: 0.55rem 0.72rem;
+  border-radius: 12px 12px 12px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.07));
+  opacity: 0;
+  transform: translateY(8px);
+  animation: chatIn 0.22s ease forwards;
+}
+
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d5dfec;
+  opacity: 0.45;
+  animation: dotPulse 0.85s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.13s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.26s;
+}
+
+@keyframes chatIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dotPulse {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  40% {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+}
+
+@keyframes chatMessageOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
 .chat-foot {
@@ -560,13 +642,15 @@ h3 {
 
 .faq-list {
   display: grid;
-  gap: 0.82rem;
+  gap: 1.05rem;
+  margin-top: 1.3rem;
 }
 
 .faq-item {
   border: 1px solid var(--card-border);
-  border-radius: 14px;
-  background: linear-gradient(180deg, #111a29, #0d1522);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #111b2b, #0d1521);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
   overflow: clip;
 }
 
@@ -580,9 +664,10 @@ h3 {
   background: transparent;
   color: var(--text);
   text-align: left;
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 0.95rem 2.8rem 0.95rem 1rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.1px;
+  padding: 1.12rem 3.3rem 1.1rem 1.15rem;
   cursor: pointer;
   position: relative;
 }
@@ -590,37 +675,116 @@ h3 {
 .faq-question::after {
   content: "+";
   position: absolute;
-  right: 1rem;
+  right: 1.05rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--primary);
-  font-size: 1.2rem;
+  color: #d9e5f6;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
   font-weight: 700;
+  line-height: 1;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 
 .faq-item.active .faq-question::after {
   content: "−";
+  background: rgba(37, 211, 102, 0.18);
+  color: #9af1bf;
+  border-color: rgba(37, 211, 102, 0.45);
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .faq-answer {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.25s ease;
+  transition: grid-template-rows 0.34s ease;
 }
 
 .faq-answer p {
   overflow: hidden;
   margin: 0;
-  color: var(--text-soft);
-  padding: 0 1rem 1rem;
+  color: #c8d5e7;
+  background: rgba(6, 13, 23, 0.45);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0 1.15rem 1.15rem;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
 }
 
 .faq-item.active .faq-answer {
   grid-template-rows: 1fr;
 }
 
+.faq-item.active .faq-answer p {
+  opacity: 1;
+  transform: translateY(0);
+  padding-top: 0.42rem;
+}
+
 .final-cta {
   text-align: center;
+}
+
+.final-cta h2 + p {
+  margin: 0 auto 1.1rem;
+  max-width: 60ch;
+  color: var(--text-soft);
+}
+
+.final-cta .btn {
+  margin-top: 0.3rem;
+}
+
+.trust-row {
+  margin-top: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.trust-pill {
+  font-size: 0.78rem;
+  color: #bad1c4;
+  border: 1px solid rgba(146, 170, 154, 0.34);
+  background: rgba(22, 35, 30, 0.45);
+  border-radius: 999px;
+  padding: 0.28rem 0.62rem;
+  letter-spacing: 0.1px;
+}
+
+.payment-row {
+  margin-top: 0.72rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.pay-badge {
+  min-width: 74px;
+  padding: 0.34rem 0.58rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: #c9d4e3;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+}
+
+.pay-pix {
+  color: #8be9c3;
+  border-color: rgba(88, 213, 168, 0.5);
 }
 
 .whatsapp-float {
@@ -710,6 +874,27 @@ h3 {
 
   .btn-sm {
     display: none;
+  }
+
+  .chat-body {
+    min-height: 275px;
+    max-height: 275px;
+  }
+
+  .faq-question {
+    font-size: 0.96rem;
+    padding: 1rem 3rem 1rem 1rem;
+  }
+
+  .faq-answer p {
+    font-size: 0.95rem;
+  }
+
+  .trust-row,
+  .payment-row {
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

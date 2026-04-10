@@ -32,9 +32,9 @@
         <div class="container hero-grid">
           <div class="hero-copy reveal">
             <p class="eyebrow">Automação de atendimento no WhatsApp</p>
-            <h1 id="hero-title">Cada minuto sem resposta é cliente perdido.</h1>
+            <h1 id="hero-title">Se você demora pra responder, seu cliente já está fechando com outro.</h1>
             <p class="lead">
-              A Zaplify transforma seu WhatsApp em um atendimento rápido, organizado e profissional — para você parar de apagar incêndio, recuperar oportunidades e ganhar tempo para vender.
+              Automatize seu atendimento, responda mais rápido e organize seu WhatsApp sem esforço.
             </p>
 
             <ul class="hero-highlights" aria-label="Principais resultados com Zaplify">
@@ -62,20 +62,12 @@
                 <strong>Atendimento Zaplify</strong>
                 <p>responde em instantes</p>
               </div>
-              <span class="chat-time" aria-label="Horário">09:41</span>
+              <span class="chat-time" id="chat-time" aria-label="Horário">09:41</span>
             </div>
-            <div class="chat-body">
-              <div class="msg msg-client">Oi, queria saber mais</div>
-              <div class="msg msg-system">
-                Olá, seja bem-vindo. Como posso te ajudar hoje?
-                <ul>
-                  <li>1. Ver preços</li>
-                  <li>2. Agendar atendimento</li>
-                  <li>3. Falar com especialista</li>
-                </ul>
+            <div class="chat-body" id="chat-flow" aria-live="polite" aria-atomic="false">
+              <div class="typing-indicator" id="typing-indicator" aria-label="Atendente digitando" hidden>
+                <span></span><span></span><span></span>
               </div>
-              <div class="msg msg-client">3</div>
-              <div class="msg msg-system">Perfeito. Vou te conectar com um especialista agora 👋</div>
             </div>
             <div class="chat-foot">Atendimento organizado sem perder o tom humano.</div>
           </aside>
@@ -274,45 +266,45 @@
           <div class="faq-list" role="list">
             <article class="faq-item" role="listitem">
               <h3>
-                <button class="faq-question" type="button" aria-expanded="false">Serve para o meu tipo de negócio?</button>
-              </h3>
-              <div class="faq-answer"><p>Se você atende pelo WhatsApp, a Zaplify pode ser adaptada para seu cenário. O fluxo é montado com base na sua rotina real.</p></div>
-            </article>
-            <article class="faq-item" role="listitem">
-              <h3>
-                <button class="faq-question" type="button" aria-expanded="false">Preciso entender de tecnologia?</button>
-              </h3>
-              <div class="faq-answer"><p>Não. Você explica como atende hoje e a configuração é feita de forma guiada, com linguagem simples.</p></div>
-            </article>
-            <article class="faq-item" role="listitem">
-              <h3>
-                <button class="faq-question" type="button" aria-expanded="false">O atendimento fica engessado?</button>
-              </h3>
-              <div class="faq-answer"><p>Não. A automação cobre etapas repetitivas e direciona o cliente, mantendo espaço para atendimento humano quando necessário.</p></div>
-            </article>
-            <article class="faq-item" role="listitem">
-              <h3>
                 <button class="faq-question" type="button" aria-expanded="false">Funciona no meu WhatsApp?</button>
               </h3>
-              <div class="faq-answer"><p>Na conversa inicial avaliamos seu contexto e orientamos o formato mais adequado para sua operação.</p></div>
+              <div class="faq-answer"><p>Sim. A automação funciona diretamente no seu WhatsApp e é adaptada para o seu tipo de atendimento. Não precisa trocar de número nem aprender nada complicado — tudo é configurado para você usar no dia a dia.</p></div>
             </article>
             <article class="faq-item" role="listitem">
               <h3>
-                <button class="faq-question" type="button" aria-expanded="false">Como funciona a implantação?</button>
+                <button class="faq-question" type="button" aria-expanded="false">O atendimento fica robótico?</button>
               </h3>
-              <div class="faq-answer"><p>Você apresenta seu processo atual, desenhamos o fluxo ideal e configuramos a automação personalizada para começar com segurança.</p></div>
+              <div class="faq-answer"><p>Não. O objetivo não é substituir você, mas organizar e acelerar o atendimento. O cliente continua tendo uma experiência natural, só que muito mais rápida e eficiente.</p></div>
             </article>
             <article class="faq-item" role="listitem">
               <h3>
-                <button class="faq-question" type="button" aria-expanded="false">Posso parcelar?</button>
+                <button class="faq-question" type="button" aria-expanded="false">Serve para o meu tipo de negócio?</button>
               </h3>
-              <div class="faq-answer"><p>Sim. Implantação e planos recorrentes têm opções de parcelamento.</p></div>
+              <div class="faq-answer"><p>Sim. O fluxo é montado de acordo com o seu tipo de cliente, serviço e forma de atendimento. Funciona para lojas, clínicas, prestadores de serviço e qualquer negócio que usa WhatsApp.</p></div>
             </article>
             <article class="faq-item" role="listitem">
               <h3>
-                <button class="faq-question" type="button" aria-expanded="false">Qual plano vale mais a pena?</button>
+                <button class="faq-question" type="button" aria-expanded="false">É difícil de usar?</button>
               </h3>
-              <div class="faq-answer"><p>O anual entrega melhor custo-benefício. Se quiser iniciar com mais flexibilidade, o mensal é uma boa porta de entrada.</p></div>
+              <div class="faq-answer"><p>Não. Depois de configurado, tudo funciona de forma simples. Você continua usando o WhatsApp normalmente, só que com muito mais organização e agilidade.</p></div>
+            </article>
+            <article class="faq-item" role="listitem">
+              <h3>
+                <button class="faq-question" type="button" aria-expanded="false">Quanto tempo leva para começar?</button>
+              </h3>
+              <div class="faq-answer"><p>Em pouco tempo você já começa a usar. A configuração é feita com base no seu atendimento atual, então o processo é rápido e direto.</p></div>
+            </article>
+            <article class="faq-item" role="listitem">
+              <h3>
+                <button class="faq-question" type="button" aria-expanded="false">Posso falar com alguém antes de contratar?</button>
+              </h3>
+              <div class="faq-answer"><p>Claro. Você pode falar diretamente no WhatsApp e entender como ficaria no seu caso antes de tomar qualquer decisão.</p></div>
+            </article>
+            <article class="faq-item" role="listitem">
+              <h3>
+                <button class="faq-question" type="button" aria-expanded="false">E se eu não gostar?</button>
+              </h3>
+              <div class="faq-answer"><p>Você pode ajustar o fluxo conforme for usando. A ideia é evoluir o atendimento com base no que funciona melhor para o seu negócio.</p></div>
             </article>
           </div>
         </div>
@@ -321,9 +313,7 @@
       <section class="section final-cta" aria-labelledby="cta-final-title">
         <div class="container reveal narrow">
           <h2 id="cta-final-title">Sua demora no WhatsApp já está custando vendas hoje.</h2>
-          <p>
-            Com a Zaplify, você organiza o atendimento, responde mais rápido e volta a ter tempo para cuidar do crescimento do seu negócio.
-          </p>
+          <p>Organize seu atendimento, responda mais rápido e pare de perder oportunidades todos os dias.</p>
           <a
             class="btn btn-lg"
             href="https://wa.me/556892327719?text=Ol%C3%A1%2C%20quero%20entender%20como%20funcionaria%20a%20automa%C3%A7%C3%A3o%20de%20atendimento%20para%20o%20meu%20neg%C3%B3cio."
@@ -331,7 +321,19 @@
             rel="noopener noreferrer"
             >Falar com especialista</a
           >
-          <p class="cta-note">Quanto antes automatizar, menos oportunidades você perde.</p>
+          <p class="cta-note">Quanto antes você resolver isso, menos clientes você perde.</p>
+
+          <div class="trust-row" aria-label="Selos de confiança">
+            <span class="trust-pill">100% seguro</span>
+            <span class="trust-pill">Atendimento confiável</span>
+            <span class="trust-pill">Pagamento facilitado</span>
+          </div>
+
+          <div class="payment-row" aria-label="Formas de pagamento">
+            <span class="pay-badge pay-pix" aria-label="Pix">Pix</span>
+            <span class="pay-badge" aria-label="Visa">VISA</span>
+            <span class="pay-badge" aria-label="Mastercard">Mastercard</span>
+          </div>
         </div>
       </section>
     </main>
