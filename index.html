@@ -32,9 +32,9 @@
         <div class="container hero-grid">
           <div class="hero-copy reveal">
             <p class="eyebrow">Automação de atendimento no WhatsApp</p>
-            <h1 id="hero-title">Cada minuto sem resposta é cliente perdido.</h1>
+            <h1 id="hero-title">Se você demora pra responder, seu cliente já está fechando com outro.</h1>
             <p class="lead">
-              A Zaplify transforma seu WhatsApp em um atendimento rápido, organizado e profissional — para você parar de apagar incêndio, recuperar oportunidades e ganhar tempo para vender.
+              Automatize seu atendimento, responda mais rápido e organize seu WhatsApp sem esforço.
             </p>
 
             <ul class="hero-highlights" aria-label="Principais resultados com Zaplify">
@@ -62,20 +62,12 @@
                 <strong>Atendimento Zaplify</strong>
                 <p>responde em instantes</p>
               </div>
-              <span class="chat-time" aria-label="Horário">09:41</span>
+              <span class="chat-time" id="chat-time" aria-label="Horário">09:41</span>
             </div>
-            <div class="chat-body">
-              <div class="msg msg-client">Oi, queria saber mais</div>
-              <div class="msg msg-system">
-                Olá, seja bem-vindo. Como posso te ajudar hoje?
-                <ul>
-                  <li>1. Ver preços</li>
-                  <li>2. Agendar atendimento</li>
-                  <li>3. Falar com especialista</li>
-                </ul>
+            <div class="chat-body" id="chat-flow" aria-live="polite" aria-atomic="false">
+              <div class="typing-indicator" id="typing-indicator" aria-label="Atendente digitando" hidden>
+                <span></span><span></span><span></span>
               </div>
-              <div class="msg msg-client">3</div>
-              <div class="msg msg-system">Perfeito. Vou te conectar com um especialista agora 👋</div>
             </div>
             <div class="chat-foot">Atendimento organizado sem perder o tom humano.</div>
           </aside>
