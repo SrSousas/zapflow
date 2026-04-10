@@ -49,19 +49,19 @@ const activeLabel = document.getElementById('billing-active-label');
 const planPricing = {
   mensal: {
     basic: { price: 'R$ 78,90', meta: '/mês', cash: 'ou R$ 78,90 à vista' },
-    pro: { price: 'R$ 79,90', meta: '/mês', cash: 'ou R$ 79,90 à vista' },
+    pro: { oldPrice: 'R$ 118,90', price: 'R$ 97,90/mês', cash: 'ou R$ 97,90 à vista' },
     premium: { price: 'R$ 119,90', meta: '/mês', cash: 'ou R$ 119,90 à vista' },
     label: 'Mensal'
   },
   trimestral: {
     basic: { price: 'R$ 44,90', meta: '3x de', cash: 'ou R$ 134,70 à vista' },
-    pro: { price: 'R$ 69,90', meta: '3x de', cash: 'ou R$ 209,70 à vista' },
+    pro: { oldPrice: '3x de R$ 104,90', price: '3x de R$ 89,90', cash: 'à vista R$ 269,70' },
     premium: { price: 'R$ 104,90', meta: '3x de', cash: 'ou R$ 314,70 à vista' },
     label: 'Trimestral'
   },
   anual: {
     basic: { price: 'R$ 39,90', meta: '12x de', cash: 'ou R$ 478,80 à vista' },
-    pro: { price: 'R$ 59,90', meta: '12x de', cash: 'ou R$ 718,80 à vista' },
+    pro: { oldPrice: '12x de R$ 89,90', price: '12x de R$ 79,90', cash: 'à vista R$ 958,80' },
     premium: { price: 'R$ 89,90', meta: '12x de', cash: 'ou R$ 1.078,80 à vista' },
     label: 'Anual'
   }
@@ -71,9 +71,10 @@ const planElements = {
   basicPrice: document.querySelector('[data-plan=\"basic-price\"]'),
   basicMeta: document.querySelector('[data-plan=\"basic-meta\"]'),
   basicCash: document.querySelector('[data-plan=\"basic-cash\"]'),
+  proOldPrice: document.querySelector('[data-plan=\"pro-old-price\"]'),
   proPrice: document.querySelector('[data-plan=\"pro-price\"]'),
-  proMeta: document.querySelector('[data-plan=\"pro-meta\"]'),
   proCash: document.querySelector('[data-plan=\"pro-cash\"]'),
+  proPromoNote: document.querySelector('[data-plan=\"pro-promo-note\"]'),
   premiumPrice: document.querySelector('[data-plan=\"premium-price\"]'),
   premiumMeta: document.querySelector('[data-plan=\"premium-meta\"]'),
   premiumCash: document.querySelector('[data-plan=\"premium-cash\"]')
@@ -92,15 +93,17 @@ function updatePlanPricing(period) {
   const data = planPricing[period];
   if (!data) return;
 
-  planElements.basicPrice.textContent = data.basic.price;
-  planElements.basicMeta.textContent = data.basic.meta;
-  planElements.basicCash.textContent = data.basic.cash;
-  planElements.proPrice.textContent = data.pro.price;
-  planElements.proMeta.textContent = data.pro.meta;
-  planElements.proCash.textContent = data.pro.cash;
-  planElements.premiumPrice.textContent = data.premium.price;
-  planElements.premiumMeta.textContent = data.premium.meta;
-  planElements.premiumCash.textContent = data.premium.cash;
+  if (planElements.basicPrice) planElements.basicPrice.textContent = data.basic.price;
+  if (planElements.basicMeta) planElements.basicMeta.textContent = data.basic.meta;
+  if (planElements.basicCash) planElements.basicCash.textContent = data.basic.cash;
+
+  if (planElements.proOldPrice) planElements.proOldPrice.textContent = data.pro.oldPrice;
+  if (planElements.proPrice) planElements.proPrice.textContent = data.pro.price;
+  if (planElements.proCash) planElements.proCash.textContent = data.pro.cash;
+
+  if (planElements.premiumPrice) planElements.premiumPrice.textContent = data.premium.price;
+  if (planElements.premiumMeta) planElements.premiumMeta.textContent = data.premium.meta;
+  if (planElements.premiumCash) planElements.premiumCash.textContent = data.premium.cash;
 
   if (activeLabel) {
     activeLabel.textContent = data.label;
@@ -110,9 +113,10 @@ function updatePlanPricing(period) {
     planElements.basicPrice,
     planElements.basicMeta,
     planElements.basicCash,
+    planElements.proOldPrice,
     planElements.proPrice,
-    planElements.proMeta,
     planElements.proCash,
+    planElements.proPromoNote,
     planElements.premiumPrice,
     planElements.premiumMeta,
     planElements.premiumCash
