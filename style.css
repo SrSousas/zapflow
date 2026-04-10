@@ -769,58 +769,36 @@ h3 {
   text-align: center;
 }
 
+.final-cta .narrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.final-cta h2 {
+  margin-bottom: 0.15rem;
+}
+
 .final-cta h2 + p {
-  margin: 0 auto 1.1rem;
+  margin: 0;
   max-width: 60ch;
   color: var(--text-soft);
+  line-height: 1.75;
 }
 
 .final-cta .btn {
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
 }
 
-.trust-row {
-  margin-top: 0.95rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
+.cta-microcopy {
+  margin: -0.12rem 0 0;
+  font-size: 0.92rem;
+  color: #96a6bd;
 }
 
-.trust-pill {
-  font-size: 0.78rem;
-  color: #bad1c4;
-  border: 1px solid rgba(146, 170, 154, 0.34);
-  background: rgba(22, 35, 30, 0.45);
-  border-radius: 999px;
-  padding: 0.28rem 0.62rem;
-  letter-spacing: 0.1px;
-}
-
-.payment-row {
-  margin-top: 0.72rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.45rem;
-}
-
-.pay-badge {
-  min-width: 74px;
-  padding: 0.34rem 0.58rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.05);
-  color: #c9d4e3;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.35px;
-  text-transform: uppercase;
-}
-
-.pay-pix {
-  color: #8be9c3;
-  border-color: rgba(88, 213, 168, 0.5);
+.cta-note {
+  margin: 0.25rem 0 0;
 }
 
 .whatsapp-float {
@@ -931,11 +909,12 @@ h3 {
     font-size: 0.95rem;
   }
 
-  .trust-row,
-  .payment-row {
-    max-width: 280px;
-    margin-left: auto;
-    margin-right: auto;
+  .final-cta .narrow {
+    gap: 0.82rem;
+  }
+
+  .cta-microcopy {
+    font-size: 0.88rem;
   }
 }
 
