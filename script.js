@@ -45,25 +45,29 @@ if ('IntersectionObserver' in window) {
 
 const billingButtons = document.querySelectorAll('.billing-btn');
 const activeLabel = document.getElementById('billing-active-label');
+const savingsLabel = document.getElementById('billing-savings');
 
 const planPricing = {
   mensal: {
-    basic: { price: 'R$ 78,90', meta: '/mês', cash: 'ou R$ 78,90 à vista' },
-    pro: { oldPrice: 'R$ 118,90', price: 'R$ 97,90/mês', cash: 'ou R$ 97,90 à vista' },
-    premium: { price: 'R$ 119,90', meta: '/mês', cash: 'ou R$ 119,90 à vista' },
-    label: 'Mensal'
+    basic: { price: 'R$ 78,90', meta: 'por mês', cash: 'Total no período: R$ 78,90 à vista' },
+    pro: { oldPrice: 'R$ 118,90/mês', price: 'R$ 97,90', meta: 'por mês', cash: 'Total no período: R$ 97,90 à vista' },
+    premium: { price: 'R$ 119,90', meta: 'por mês', cash: 'Total no período: R$ 119,90 à vista' },
+    label: 'Mensal',
+    savings: 'Sem desconto adicional'
   },
   trimestral: {
-    basic: { price: 'R$ 44,90', meta: '3x de', cash: 'ou R$ 134,70 à vista' },
-    pro: { oldPrice: '3x de R$ 104,90', price: '3x de R$ 89,90', cash: 'à vista R$ 269,70' },
-    premium: { price: 'R$ 104,90', meta: '3x de', cash: 'ou R$ 314,70 à vista' },
-    label: 'Trimestral'
+    basic: { price: 'R$ 44,90', meta: 'por mês (cobrança trimestral)', cash: 'Total no período: R$ 134,70 à vista' },
+    pro: { oldPrice: 'R$ 104,90/mês', price: 'R$ 89,90', meta: 'por mês (cobrança trimestral)', cash: 'Total no período: R$ 269,70 à vista' },
+    premium: { price: 'R$ 104,90', meta: 'por mês (cobrança trimestral)', cash: 'Total no período: R$ 314,70 à vista' },
+    label: 'Trimestral',
+    savings: 'Economize 20%'
   },
   anual: {
-    basic: { price: 'R$ 39,90', meta: '12x de', cash: 'ou R$ 478,80 à vista' },
-    pro: { oldPrice: '12x de R$ 89,90', price: '12x de R$ 79,90', cash: 'à vista R$ 958,80' },
-    premium: { price: 'R$ 89,90', meta: '12x de', cash: 'ou R$ 1.078,80 à vista' },
-    label: 'Anual'
+    basic: { price: 'R$ 39,90', meta: 'por mês (cobrança anual)', cash: 'Total no período: R$ 478,80 à vista' },
+    pro: { oldPrice: 'R$ 89,90/mês', price: 'R$ 79,90', meta: 'por mês (cobrança anual)', cash: 'Total no período: R$ 958,80 à vista' },
+    premium: { price: 'R$ 89,90', meta: 'por mês (cobrança anual)', cash: 'Total no período: R$ 1.078,80 à vista' },
+    label: 'Anual',
+    savings: 'Economize 32%'
   }
 };
 
@@ -73,6 +77,7 @@ const planElements = {
   basicCash: document.querySelector('[data-plan=\"basic-cash\"]'),
   proOldPrice: document.querySelector('[data-plan=\"pro-old-price\"]'),
   proPrice: document.querySelector('[data-plan=\"pro-price\"]'),
+  proMeta: document.querySelector('[data-plan=\"pro-meta\"]'),
   proCash: document.querySelector('[data-plan=\"pro-cash\"]'),
   proPromoNote: document.querySelector('[data-plan=\"pro-promo-note\"]'),
   premiumPrice: document.querySelector('[data-plan=\"premium-price\"]'),
@@ -99,6 +104,7 @@ function updatePlanPricing(period) {
 
   if (planElements.proOldPrice) planElements.proOldPrice.textContent = data.pro.oldPrice;
   if (planElements.proPrice) planElements.proPrice.textContent = data.pro.price;
+  if (planElements.proMeta) planElements.proMeta.textContent = data.pro.meta;
   if (planElements.proCash) planElements.proCash.textContent = data.pro.cash;
 
   if (planElements.premiumPrice) planElements.premiumPrice.textContent = data.premium.price;
@@ -109,12 +115,18 @@ function updatePlanPricing(period) {
     activeLabel.textContent = data.label;
   }
 
+  if (savingsLabel) {
+    savingsLabel.textContent = data.savings;
+    savingsLabel.classList.toggle('is-highlight', period !== 'mensal');
+  }
+
   applyPriceAnimation(
     planElements.basicPrice,
     planElements.basicMeta,
     planElements.basicCash,
     planElements.proOldPrice,
     planElements.proPrice,
+    planElements.proMeta,
     planElements.proCash,
     planElements.proPromoNote,
     planElements.premiumPrice,
@@ -232,8 +244,10 @@ async function smoothResetConversation() {
 
 async function runConversationLoop() {
   if (!chatFlowContainer) return;
+  const maxLoops = window.matchMedia('(max-width: 768px)').matches ? 2 : 4;
+  let currentLoop = 0;
 
-  while (true) {
+  while (currentLoop < maxLoops) {
     updateChatTime();
 
     for (const step of conversationSteps) {
@@ -250,8 +264,11 @@ async function runConversationLoop() {
     }
 
     setTyping(false);
-    await smoothResetConversation();
-    await wait(420);
+    if (currentLoop < maxLoops - 1) {
+      await smoothResetConversation();
+      await wait(850);
+    }
+    currentLoop += 1;
   }
 }
 

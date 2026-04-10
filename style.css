@@ -253,6 +253,16 @@ h3 {
   max-width: 42ch;
 }
 
+.cta-trust {
+  margin: -0.1rem 0 0;
+  font-size: 0.82rem;
+  color: #9fefbe;
+  border: 1px solid rgba(37, 211, 102, 0.28);
+  background: rgba(12, 34, 20, 0.45);
+  border-radius: 999px;
+  padding: 0.34rem 0.7rem;
+}
+
 .chat-card {
   position: relative;
   width: min(100%, 390px);
@@ -512,6 +522,50 @@ h3 {
   margin-bottom: 0;
 }
 
+.proof {
+  padding-top: 2.9rem;
+}
+
+.trust-metrics {
+  margin-top: 1.1rem;
+}
+
+.metric-card {
+  text-align: center;
+  background: linear-gradient(180deg, #122338 0%, #0f1d2f 100%);
+}
+
+.metric-value {
+  margin: 0;
+  font-size: clamp(1.3rem, 5vw, 1.8rem);
+  line-height: 1.1;
+  color: #c8ffd8;
+  font-weight: 800;
+}
+
+.metric-label {
+  margin-top: 0.3rem;
+  color: #c2d2e4;
+  font-size: 0.95rem;
+}
+
+.results-grid {
+  margin-top: 0.95rem;
+}
+
+.result-type {
+  margin: 0;
+  font-weight: 800;
+  color: #def5e8;
+  font-size: 0.95rem;
+}
+
+.result-outcome {
+  margin-top: 0.45rem;
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
 .section-footnote,
 .section-intro,
 .muted-text,
@@ -575,6 +629,10 @@ h3 {
   content: "✔";
   color: var(--primary);
   margin-right: 0.6rem;
+}
+
+.compact-check-list {
+  margin-top: 0.9rem;
 }
 
 .plan {
@@ -653,10 +711,35 @@ h3 {
   text-align: center;
 }
 
+.savings-pill {
+  display: inline-flex;
+  margin-left: 0.42rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: #c7d6e7;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(10, 16, 26, 0.62);
+}
+
+.savings-pill.is-highlight {
+  color: #092111;
+  background: linear-gradient(135deg, #6ef6a0, #35d870);
+  border-color: rgba(44, 185, 92, 0.45);
+  font-weight: 700;
+}
+
 .plan-name {
   font-size: 1.15rem;
   line-height: 1.25;
   margin-bottom: 0.2rem;
+}
+
+.plan-highlight {
+  margin: -0.05rem 0 0.25rem;
+  color: #bfeecf;
+  font-size: 0.83rem;
+  line-height: 1.45;
 }
 
 .plan-prices {
@@ -741,7 +824,7 @@ h3 {
 
 .cash-price {
   margin: 0.1rem 0 0.1rem;
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   color: #90a4bb;
 }
 
@@ -963,7 +1046,7 @@ h3 {
   }
 
   .section {
-    padding: 3.85rem 0;
+    padding: 3.3rem 0;
   }
 
   .nav {
@@ -1010,6 +1093,10 @@ h3 {
     gap: 1rem;
   }
 
+  .proof {
+    padding-top: 2.3rem;
+  }
+
   .eyebrow {
     font-size: 0.9rem;
   }
@@ -1029,6 +1116,10 @@ h3 {
     width: 100%;
     align-items: center;
     margin-top: 0.55rem;
+  }
+
+  .cta-trust {
+    font-size: 0.84rem;
   }
 
   .cta-row .btn {
@@ -1060,8 +1151,8 @@ h3 {
   .card p,
   .check-list li,
   .plan-features li {
-    font-size: 0.99rem;
-    line-height: 1.62;
+    font-size: 0.96rem;
+    line-height: 1.58;
   }
 
   #planos .container > h2,
@@ -1091,6 +1182,12 @@ h3 {
     font-size: 0.94rem;
   }
 
+  .savings-pill {
+    display: block;
+    margin: 0.45rem auto 0;
+    width: fit-content;
+  }
+
   .recurring-label {
     font-size: 0.82rem;
   }
@@ -1112,16 +1209,15 @@ h3 {
   }
 
   .faq-question {
-    font-size: 1.04rem;
-    min-height: 64px;
-    padding: 1.12rem 3.2rem 1.12rem 1.08rem;
+    font-size: 1.01rem;
+    min-height: 62px;
+    padding: 1rem 3.2rem 1rem 1.05rem;
   }
-}
 
   .faq-answer p {
     font-size: 0.99rem;
-    line-height: 1.72;
-    padding: 0 1.08rem 1.08rem;
+    line-height: 1.66;
+    padding: 0 1.05rem 1rem;
   }
 
   .final-cta .narrow {
@@ -1143,11 +1239,11 @@ h3 {
   }
 
   .section {
-    padding: 3.55rem 0;
+    padding: 3rem 0;
   }
 
   .hero {
-    padding-top: 3.95rem;
+    padding-top: 3.7rem;
   }
 
   .nav {
@@ -1213,7 +1309,7 @@ h3 {
   }
 
   .plan-features li {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
   }
 
   .faq-question {
