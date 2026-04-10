@@ -48,7 +48,7 @@ const activeLabel = document.getElementById('billing-active-label');
 
 const planPricing = {
   mensal: {
-    basic: { price: 'R$ 49,90', meta: '/mês', cash: 'ou R$ 49,90 à vista' },
+    basic: { price: 'R$ 78,90', meta: '/mês', cash: 'ou R$ 78,90 à vista' },
     pro: { price: 'R$ 79,90', meta: '/mês', cash: 'ou R$ 79,90 à vista' },
     premium: { price: 'R$ 119,90', meta: '/mês', cash: 'ou R$ 119,90 à vista' },
     label: 'Mensal'
@@ -131,3 +131,129 @@ billingButtons.forEach((button) => {
     updatePlanPricing(period);
   });
 });
+
+const chatFlowContainer = document.getElementById('chat-flow');
+const typingIndicator = document.getElementById('typing-indicator');
+const chatTimeElement = document.getElementById('chat-time');
+
+const conversationSteps = [
+  { type: 'client', text: 'Oi, queria saber mais', waitAfter: 1300 },
+  {
+    type: 'system',
+    text: 'Olá, seja bem-vindo. Como posso te ajudar hoje?',
+    waitAfter: 1200,
+    typingBefore: 1200
+  },
+  {
+    type: 'system',
+    text: `1. Ver preços<br />2. Agendar atendimento<br />3. Falar com especialista`,
+    waitAfter: 1500,
+    typingBefore: 1200
+  },
+  { type: 'client', text: '1', waitAfter: 1300 },
+  {
+    type: 'system',
+    text: 'Perfeito. Temos planos pensados para diferentes tipos de negócio.',
+    waitAfter: 1300,
+    typingBefore: 1200
+  },
+  {
+    type: 'system',
+    text: 'Você quer algo mais simples para organizar seu atendimento ou algo mais completo para vender mais?',
+    waitAfter: 1600,
+    typingBefore: 1200
+  },
+  { type: 'client', text: 'Mais completo', waitAfter: 1300 },
+  {
+    type: 'system',
+    text: 'Nesse caso, o ideal pode ser o plano Profissional ou Premium.',
+    waitAfter: 1300,
+    typingBefore: 1200
+  },
+  {
+    type: 'system',
+    text: 'Se quiser, posso te conectar com um especialista agora.',
+    waitAfter: 1500,
+    typingBefore: 1200
+  },
+  { type: 'client', text: 'Quero sim', waitAfter: 1300 },
+  {
+    type: 'system',
+    text: 'Perfeito. Vou te encaminhar agora 👋',
+    waitAfter: 3400,
+    typingBefore: 1200
+  }
+];
+
+const wait = (time) => new Promise((resolve) => setTimeout(resolve, time));
+
+function updateChatTime() {
+  if (!chatTimeElement) return;
+  const now = new Date();
+  chatTimeElement.textContent = now.toLocaleTimeString('pt-BR', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
+
+function createMessage(type, content) {
+  const message = document.createElement('div');
+  message.className = `msg ${type === 'client' ? 'msg-client' : 'msg-system'}`;
+  message.innerHTML = content;
+  return message;
+}
+
+function setTyping(visible) {
+  if (!typingIndicator || !chatFlowContainer) return;
+  typingIndicator.hidden = !visible;
+  if (visible) {
+    chatFlowContainer.appendChild(typingIndicator);
+    chatFlowContainer.scrollTop = chatFlowContainer.scrollHeight;
+  }
+}
+
+async function smoothResetConversation() {
+  if (!chatFlowContainer) return;
+  const messages = Array.from(chatFlowContainer.querySelectorAll('.msg'));
+
+  for (const message of messages) {
+    message.classList.add('msg-out');
+    await wait(85);
+  }
+
+  await wait(240);
+  messages.forEach((message) => message.remove());
+  chatFlowContainer.scrollTop = 0;
+}
+
+async function runConversationLoop() {
+  if (!chatFlowContainer) return;
+
+  while (true) {
+    updateChatTime();
+
+    for (const step of conversationSteps) {
+      if (step.typingBefore && step.type === 'system') {
+        setTyping(true);
+        await wait(step.typingBefore);
+        setTyping(false);
+      }
+
+      const message = createMessage(step.type, step.text);
+      chatFlowContainer.appendChild(message);
+      chatFlowContainer.scrollTop = chatFlowContainer.scrollHeight;
+      await wait(step.waitAfter);
+    }
+
+    setTyping(false);
+    await smoothResetConversation();
+    await wait(420);
+  }
+}
+
+if (chatFlowContainer && typingIndicator) {
+  setTyping(false);
+  runConversationLoop();
+  updateChatTime();
+  setInterval(updateChatTime, 60 * 1000);
+}
