@@ -642,13 +642,15 @@ h3 {
 
 .faq-list {
   display: grid;
-  gap: 0.82rem;
+  gap: 1.05rem;
+  margin-top: 1.3rem;
 }
 
 .faq-item {
   border: 1px solid var(--card-border);
-  border-radius: 14px;
-  background: linear-gradient(180deg, #111a29, #0d1522);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #111b2b, #0d1521);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
   overflow: clip;
 }
 
@@ -662,9 +664,10 @@ h3 {
   background: transparent;
   color: var(--text);
   text-align: left;
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 0.95rem 2.8rem 0.95rem 1rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.1px;
+  padding: 1.12rem 3.3rem 1.1rem 1.15rem;
   cursor: pointer;
   position: relative;
 }
@@ -672,33 +675,58 @@ h3 {
 .faq-question::after {
   content: "+";
   position: absolute;
-  right: 1rem;
+  right: 1.05rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--primary);
-  font-size: 1.2rem;
+  color: #d9e5f6;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
   font-weight: 700;
+  line-height: 1;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 
 .faq-item.active .faq-question::after {
   content: "−";
+  background: rgba(37, 211, 102, 0.18);
+  color: #9af1bf;
+  border-color: rgba(37, 211, 102, 0.45);
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .faq-answer {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.25s ease;
+  transition: grid-template-rows 0.34s ease;
 }
 
 .faq-answer p {
   overflow: hidden;
   margin: 0;
-  color: var(--text-soft);
-  padding: 0 1rem 1rem;
+  color: #c8d5e7;
+  background: rgba(6, 13, 23, 0.45);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0 1.15rem 1.15rem;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
 }
 
 .faq-item.active .faq-answer {
   grid-template-rows: 1fr;
+}
+
+.faq-item.active .faq-answer p {
+  opacity: 1;
+  transform: translateY(0);
+  padding-top: 0.42rem;
 }
 
 .final-cta {
@@ -851,6 +879,15 @@ h3 {
   .chat-body {
     min-height: 275px;
     max-height: 275px;
+  }
+
+  .faq-question {
+    font-size: 0.96rem;
+    padding: 1rem 3rem 1rem 1rem;
+  }
+
+  .faq-answer p {
+    font-size: 0.95rem;
   }
 
   .trust-row,
