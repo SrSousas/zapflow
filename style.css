@@ -957,6 +957,186 @@ h3 {
   transform: translateY(0);
 }
 
+@media (max-width: 768px) {
+  .container {
+    width: min(1120px, calc(100% - 1.7rem));
+  }
+
+  .section {
+    padding: 3.85rem 0;
+  }
+
+  .nav {
+    gap: 0.7rem;
+    padding: 0.72rem 0;
+  }
+
+  .btn-sm {
+    font-size: 0.79rem;
+    padding: 0.58rem 0.72rem;
+    min-height: 39px;
+  }
+
+  h1,
+  h2 {
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: clamp(1.9rem, 7vw, 2.35rem);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: clamp(1.55rem, 5.4vw, 1.95rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  p,
+  .lead,
+  .section-footnote,
+  .section-intro,
+  .cta-note {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .hero-copy {
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .eyebrow {
+    font-size: 0.9rem;
+  }
+
+  .hero-highlights {
+    justify-items: center;
+    gap: 0.62rem;
+  }
+
+  .hero-highlights li {
+    width: min(100%, 34ch);
+    font-size: 0.96rem;
+    text-align: center;
+  }
+
+  .cta-row {
+    width: 100%;
+    align-items: center;
+    margin-top: 0.55rem;
+  }
+
+  .cta-row .btn {
+    width: min(100%, 360px);
+  }
+
+  .chat-card {
+    width: min(100%, 400px);
+  }
+
+  .grid {
+    gap: 1.1rem;
+  }
+
+  .card,
+  .plan,
+  .step,
+  .check-list li {
+    padding: 1.15rem;
+  }
+
+  .card h3,
+  .step h3,
+  .plan-name {
+    font-size: 1.12rem;
+    line-height: 1.35;
+  }
+
+  .card p,
+  .check-list li,
+  .plan-features li {
+    font-size: 0.99rem;
+    line-height: 1.62;
+  }
+
+  #planos .container > h2,
+  #faq .container > h2,
+  #beneficios .container > h2,
+  #como-funciona .container > h2,
+  #para-quem .container > h2,
+  #diferenciais .container > h2 {
+    text-align: center;
+  }
+
+  .plan-grid {
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .billing-toggle {
+    width: min(100%, 460px);
+    justify-content: center;
+    padding: 0.42rem;
+    gap: 0.45rem;
+  }
+
+  .billing-btn {
+    min-height: 46px;
+    padding: 0.7rem 0.95rem;
+    font-size: 0.94rem;
+  }
+
+  .recurring-label {
+    font-size: 0.82rem;
+  }
+
+  .old-price,
+  .cash-price,
+  .promo-note,
+  .recurring-meta {
+    font-size: 0.92rem;
+  }
+
+  .recurring-price {
+    font-size: clamp(1.9rem, 8.4vw, 2.35rem);
+    line-height: 1.1;
+  }
+
+  .faq-list {
+    gap: 1.05rem;
+  }
+
+  .faq-question {
+    font-size: 1.04rem;
+    min-height: 64px;
+    padding: 1.12rem 3.2rem 1.12rem 1.08rem;
+  }
+}
+
+  .faq-answer p {
+    font-size: 0.99rem;
+    line-height: 1.72;
+    padding: 0 1.08rem 1.08rem;
+  }
+
+  .final-cta .narrow {
+    gap: 0.95rem;
+  }
+
+  .final-cta h2 + p {
+    font-size: 1rem;
+  }
+
+  .cta-microcopy {
+    font-size: 0.94rem;
+  }
+}
+
 @media (max-width: 480px) {
   .container {
     width: min(1120px, calc(100% - 1.4rem));
@@ -982,16 +1162,18 @@ h3 {
   }
 
   h1 {
-    font-size: clamp(1.6rem, 8.2vw, 1.95rem);
-    max-width: 15ch;
+    font-size: clamp(1.72rem, 8.4vw, 2.02rem);
+    max-width: 16ch;
   }
 
   .lead {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.68;
   }
 
   .hero-highlights li {
-    font-size: 0.84rem;
+    width: min(100%, 30ch);
+    font-size: 0.93rem;
   }
 
   .chat-body {
@@ -1011,24 +1193,36 @@ h3 {
 
   .billing-btn {
     min-width: 84px;
-    padding: 0.6rem 0.7rem;
-    font-size: 0.82rem;
+    padding: 0.64rem 0.72rem;
+    font-size: 0.88rem;
   }
 
   .plan {
-    padding: 1rem 0.92rem;
+    padding: 1.08rem 0.98rem;
   }
 
   .recurring-price {
-    font-size: clamp(1.5rem, 9vw, 1.78rem);
+    font-size: clamp(1.7rem, 9vw, 1.95rem);
+  }
+
+  .old-price,
+  .cash-price,
+  .promo-note,
+  .recurring-meta {
+    font-size: 0.87rem;
+  }
+
+  .plan-features li {
+    font-size: 0.95rem;
   }
 
   .faq-question {
-    font-size: 0.94rem;
+    font-size: 0.99rem;
+    min-height: 60px;
   }
 
   .faq-answer p {
-    font-size: 0.93rem;
+    font-size: 0.96rem;
   }
 
   .final-cta .btn {
