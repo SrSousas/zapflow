@@ -705,6 +705,60 @@ h3 {
   text-align: center;
 }
 
+.final-cta h2 + p {
+  margin: 0 auto 1.1rem;
+  max-width: 60ch;
+  color: var(--text-soft);
+}
+
+.final-cta .btn {
+  margin-top: 0.3rem;
+}
+
+.trust-row {
+  margin-top: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.trust-pill {
+  font-size: 0.78rem;
+  color: #bad1c4;
+  border: 1px solid rgba(146, 170, 154, 0.34);
+  background: rgba(22, 35, 30, 0.45);
+  border-radius: 999px;
+  padding: 0.28rem 0.62rem;
+  letter-spacing: 0.1px;
+}
+
+.payment-row {
+  margin-top: 0.72rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.pay-badge {
+  min-width: 74px;
+  padding: 0.34rem 0.58rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: #c9d4e3;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+}
+
+.pay-pix {
+  color: #8be9c3;
+  border-color: rgba(88, 213, 168, 0.5);
+}
+
 .whatsapp-float {
   position: fixed;
   right: 16px;
@@ -797,6 +851,13 @@ h3 {
   .chat-body {
     min-height: 275px;
     max-height: 275px;
+  }
+
+  .trust-row,
+  .payment-row {
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
